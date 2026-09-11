@@ -22,5 +22,6 @@ elif [ "$MODE" = "cli" ]; then
   exec bun packages/cli/bin/hyperframes.mjs "$@"
 else
   echo "[HyperFrames] Launching Producer Render API Server on port $PORT..."
-  exec bun run server/railway-server.ts
+  cd /app/packages/producer
+  exec bun dist/public-server.js --port "$PORT"
 fi
